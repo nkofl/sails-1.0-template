@@ -1,0 +1,25 @@
+mixin flash()
+  - if(req.session.flash){ 
+    - if(req.session.flash.kind == "update"){
+      - req.session.flash.message.split('_').forEach(function(m){ 
+        - if(m != '') { 
+          .alert.alert-success.fade.show#flashMessage= m
+        - }
+      - });
+    - } else if (req.session.flash.kind == "error") {
+      - req.session.flash.message.split('_').forEach(function(m){ 
+        - if(m != '') { 
+          .alert.alert-danger.fade.show#flashMessage= m 
+        - }
+      - });
+    - }
+    - if(req.session.flash.clearDelay && req.session.flash.clearDelay > 0){ 
+      script
+        | $(function(){
+        |   setTimeout(function(){
+        |     $('#flashMessage').alert('close');
+        |   }, #{req.session.flash.clearDelay});
+        | });
+    - }
+    - req.session.flash = null;
+  - }

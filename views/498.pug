@@ -1,0 +1,22 @@
+extends layout_err
+block metas
+block title
+  title Expired(498)
+block body
+  #dialog
+    h1 
+      | Sorry, that link is expired, or
+      br
+      span.mobile-spacer &nbsp;
+      | it has already been used.
+    hr
+    .help
+      p 
+        | Need further help accessing your account?
+        br
+        span.mobile-spacer &nbsp;
+        | Please 
+        a(href="/contact") contact support
+        | or request a new 
+        a(href="/password/forgot") password reset.
+      a.btn.btn-lg.btn-outline-dark(href="/password/forgot") Reset password

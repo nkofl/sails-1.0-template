@@ -1,0 +1,34 @@
+.bg-trans {
+  background: rgba(0,0,0,0.4);
+}
+.md-transition {    
+  -webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+.alerts {
+  position: absolute;
+  top: 5em;
+  right: 1em;
+  z-index:9999; 
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 4em;
+}
+ul li.hanging {
+  padding-left: 3.5em;
+  text-indent: -3.5em;
+}

@@ -1,0 +1,54 @@
+include ../mixins/logo.pug
+include ../mixins/flash.pug
+doctype html
+html(lang="en")
+  head
+    <!-- Required meta tags -->
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    block metas
+
+    <!-- Bootstrap CSS -->
+    if locals.title 
+      title= title
+    else
+      title New Application
+    
+    // STYLES
+    // STYLES END
+
+    // SCRIPTS
+    // SCRIPTS END
+
+    // VIEW STYLES
+    // VIEW STYLES END
+
+    // VIEW SCRIPTS
+    // VIEW SCRIPTS END
+  body
+    block navmenu
+      nav.navbar.navbar-expand-lg.navbar-dark.py-0.fixed-top.bg-dark.md-transition#top-nav
+        a.navbar-brand(href="/" aria-label="App")
+          +logo(1)
+    .main-page
+      .container-fluid.pt-5
+        .row.pt-5
+          .col-1.col-md-3.col-sm-2.col-lg-4
+          .col-10.col-md-6.col-sm-8.col-lg-4
+            .display-4.text-center This is a private beta.
+            .text-center Please log in to continue:
+            form.m-2(method="POST" action="/auth/login" novalidate)
+              .form-group
+                label(for="exampleDropdownFormEmail1") Email address
+                input.form-control#login-email(type="email" name="email" placeholder="email@example.com")
+              .form-group
+                label(for="exampleDropdownFormPassword1") Password
+                input.form-control#login-password(type="password" name="password" placeholder="Password")
+              .form-check
+                input.form-check-input#dropdownCheck(type="checkbox" name="remember")
+                label.form-check-label(for="dropdownCheck") Remember me
+              button.btn.btn-dark#login-button(type="submit") Sign in
+        .row
+          .col-1.col-md-3.col-sm-2.col-lg-4
+          .col-10.col-md-6.col-sm-8.col-lg-4
+            +flash()

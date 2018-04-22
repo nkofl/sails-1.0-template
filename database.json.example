@@ -1,0 +1,29 @@
+{
+  "defaultEnv": "dev",
+  "coffee-file": true,
+  "production": {
+    "driver": "pg",
+    "user": "USERNAME",
+    "password": "PASSWORD",
+    "host": "localhost",
+    "database": "app_production",
+    "schema": "public"
+  },
+  "staging": {
+    "driver": "pg",
+    "user": "USERNAME",
+    "password": "PASSWORD",
+    "host": "localhost",
+    "database": "app_staging",
+    "schema": "public"
+  },
+  "dev": {
+    "driver": "pg",
+    "user": "USERNAME",
+    "password": "PASSWORD",
+    "host": "localhost",
+    "database": "app_dev",
+    "schema": "public"
+  }
+}
+

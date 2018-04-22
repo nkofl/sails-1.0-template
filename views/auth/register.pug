@@ -1,0 +1,79 @@
+extends ../layout
+include ../mixins/stateoptions
+block metas
+  meta(name='no-nav-img' content='true') 
+block body
+  .container-fluid
+    .row
+      .col.text-center
+        h1 Register a new Account
+    .row
+      .col.text-center
+        em (fields in red are required)
+    .row.pt-5
+      .col
+        form.was-validated(method="POST" action="/auth/new-user")
+          .form-row
+            .col-md-2.col-lg-3
+            .col-12.col-md-4.col-lg-3
+              .form-group 
+                .label(for="email") Email:
+                input.form-control#email(type="email" name="email" aria-describedby="email-help" placeholder="Enter Email" required)
+                small#email-help.form-text.text-muted Please enter an email address where we can contact you
+            .col-12.col-md-4.col-lg-3
+              .form-group 
+                .label(for="password") Password:
+                input.form-control#password(type="password" name="password" aria-describedby="password-help" placeholder="Enter Password" required)
+                small#password-help.form-text.text-muted Please choose a password of at least 8 characters, containing at least one capital letter, lowercase letter, and a number
+          .form-row
+            .col-md-2.col-lg-3
+            .col-12.col-md-4.col-lg-3
+              .form-group 
+                .label(for="first-name") First name:
+                input.form-control#first-name(type="text" name="firstName" placeholder="Enter First Name" required)
+            .col-12.col-md-4.col-lg-3
+              .form-group 
+                .label(for="last-name") Last name:
+                input.form-control#last-name(type="text" name="lastName" placeholder="Enter Last Name" required)
+          .form-row
+            .col-md-2.col-lg-3
+            .col-12.col-md-8.col-lg-6
+              .form-group 
+                .label(for="company") Company:
+                input.form-control#company(type="text" name="company" placeholder="Enter Company Name")
+          .form-row
+            .col-md-2.col-lg-3
+            .col-12.col-md-4.col-lg-3
+              .form-group 
+                .label(for="mobile") Mobile Phone:
+                input.form-control#mobile(type="text" name="mobilePhone" placeholder="Enter Mobile Phone" required)
+            .col-12.col-md-4.col-lg-3
+              .form-group 
+                .label(for="direct") Direct Phone:
+                input.form-control#direct(type="text" name="directPhone" placeholder="Enter Direct Phone")
+          .form-row
+            .col-md-2.col-lg-3
+            .col-12.col-md-8.col-lg-6
+              .form-group 
+                .label(for="address") Address:
+                input.form-control#address(type="text" name="address" placeholder="Enter Address" required)
+          .form-row
+            .col-md-2.col-lg-3
+            .col-12.col-md-4.col-lg-3
+              .form-group 
+                .label(for="city") City:
+                input.form-control#city(type="text" name="city" placeholder="Enter City" required)
+            .col-6.col-md-2.col-lg-1
+              .form-group 
+                .label(for="state") State:
+                select.form-control#state(name="state" required)
+                  +stateoptions
+            .col-6.col-md-2
+              .form-group 
+                .label(for="zip") ZIP:
+                input.form-control#zip(type="text" name="zip" placeholder="Enter ZIP" required)
+          .form-row
+            .col-md-2.col-lg-3
+            .col-12.col-md-8.col-lg-6
+              .form-group 
+                button.btn.btn-primary.w-100(type="submit") Register

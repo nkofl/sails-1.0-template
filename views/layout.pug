@@ -1,0 +1,108 @@
+include mixins/logo.pug
+include mixins/flash.pug
+doctype html
+html(lang="en")
+  head
+    <!-- Required meta tags -->
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    block metas
+
+    <!-- Bootstrap CSS -->
+    if locals.title 
+      title= title
+    else
+      title Application
+    
+    // STYLES
+    // STYLES END
+
+    // SCRIPTS
+    // SCRIPTS END
+
+    // VIEW STYLES
+    // VIEW STYLES END
+
+    // VIEW SCRIPTS
+    // VIEW SCRIPTS END
+    block perpage_injection
+  body
+    block navmenu
+      nav.navbar.navbar-expand-lg.navbar-dark.py-0.fixed-top.bg-trans.md-transition#top-nav
+        a.navbar-brand(href="/" aria-label="Application")
+          +logo(1)
+        button.navbar-toggler(
+          type="button" 
+          data-toggle="collapse" 
+          data-target="#navbarSupportedContent" 
+          aria-controls="navbarSupportedContent" 
+          aria-expanded="false" 
+          aria-label="Toggle navigation"
+        )
+          span.navbar-toggler-icon
+        .collapse.navbar-collapse#navbarSupportedContent
+          ul.navbar-nav.mr-auto
+            li.nav-item
+              a.nav-link(href="/") Home 
+            li.nav-item.dropdown
+              a.nav-link.dropdown-toggle#navbar-dropdown(
+                href="#" 
+                role="button" 
+                data-toggle="dropdown" 
+                aria-haspopup="true" 
+                aria-expanded="false"
+              ) About
+              .dropdown-menu(aria-labelledby="navbar-dropdown")
+                a.dropdown-item(href="/about") About Us
+                a.dropdown-item(href="/about/contact") Contact
+          ul.navbar-nav
+            li.nav-item.d-none.md-transition#nav-search
+              form.form-inline.my-2.my-lg-0
+                input.form-control.mr-sm-2(type="search" placeholder="Search..." aria-label="Search")
+                button.btn.btn-outline-success.my-2.my-sm-0(type="submit") Search
+            - if(req.session.user) {
+              li.nav-item.dropdown
+                a.nav-link.dropdown-toggle#user-dropdown(
+                  href="#" 
+                  role="button" 
+                  data-toggle="dropdown" 
+                  aria-haspopup="true" 
+                  aria-expanded="false"
+                ) #{req.session.user.firstName} #{req.session.user.lastName}
+                .dropdown-menu.dropdown-menu-right(aria-labelledby="user-dropdown")
+                  a.dropdown-item(href="/user/profile") My Profile
+                  .dropdown-divider
+                  a.dropdown-item(href="/auth/logout") Sign Out
+            - } else {
+              li.nav-item.dropdown
+                a.nav-link.dropdown-toggle#login-dropdown(
+                  href="#" 
+                  role="button" 
+                  data-toggle="dropdown" 
+                  aria-haspopup="true" 
+                  aria-expanded="false"
+                ) Sign In
+                .dropdown-menu.dropdown-menu-right(aria-labelledby="login-dropdown")
+                  form.m-2(method="POST" action="/auth/login" novalidate)
+                    .form-group
+                      label(for="exampleDropdownFormEmail1") Email address
+                      input.form-control#login-email(type="email" name="email" placeholder="email@example.com")
+                    .form-group
+                      label(for="exampleDropdownFormPassword1") Password
+                      input.form-control#login-password(type="password" name="password" placeholder="Password")
+                    .form-check
+                      input.form-check-input#dropdownCheck(type="checkbox" name="remember")
+                      label.form-check-label(for="dropdownCheck") Remember me
+                    button.btn.btn-dark#login-button(type="submit") Sign in
+                  .dropdown-divider
+                  a.dropdown-item(href="/auth/register") Not yet registered? Sign up.
+                  a.dropdown-item(href="/auth/forgot-password") Forgot password?
+            - }
+    .alerts#flashMessages
+      +flash()
+    .main-page
+      block body
+    footer.footer.bg-dark.text-secondary
+      .container-fluid
+        .row
+            

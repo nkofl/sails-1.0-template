@@ -1,0 +1,17 @@
+div(style="width: 100%; background-color: #efefef; font-family: 'Helvetica Neue', 'Helvetica', sans-serif; box-sizing: border-box; padding-bottom: 25px; padding-top: 25px;")
+  div(style="width: 90%; max-width: 800px; margin: 0px auto;")
+    block body
+    div(style="text-align: center;")
+      nav(style="color: #cccccc; font-size: 14px;")
+        - var first = true
+        for link in links
+          - if(first)
+            - first = false
+          - else
+            | &nbsp;|&nbsp;
+          a(style="color: #0c8da0;" href=baseUrl+'/'+link.url)= link.name
+      p(style="color: #787878; font-size: 11px;")
+        | Please do not reply to this email. To get in touch with us, visit our 
+        a(style="color: #0c8da0;" href=siteUrl+'/contact') help center.
+        br
+        | If you have not signed up for an account with us, please disregard this message.
