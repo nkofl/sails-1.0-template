@@ -7,7 +7,6 @@ module.exports = (req, res, proceed) ->
     else
       res.redirect('/auth/required')
   else 
-    req.session.returnTo = null
     proceed()
 # if using permissions:
 #  if !req.session.permissions
