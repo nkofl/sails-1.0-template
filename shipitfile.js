@@ -40,9 +40,8 @@ module.exports = shipit => {
   shipit.blTask('db-migrate', async () => {
     shipit.log('Migrating database.');
     var cdPath = shipit.releasePath || shipit.currentPath;
-    return shipit.remote(
-      'db-migrate --version && cd ' + cdPath + ' && db-migrate up'
-    ).then(function () {
+    let cmd = `db-migrate --version && cd ${cdPath} && db-migrate up --env ${shipit.environment}`
+    return shipit.remote(cmd).then(function () {
       shipit.log(colors.green('db-migrate complete'));
     })
     .then(function () {
@@ -106,10 +105,10 @@ module.exports = shipit => {
     if(shipit.environment == 'production')
       shipit.start('buildAssets');
     else
-      shipit.start('pm2');
+      shipit.start('start');
   })
 
   shipit.on('assetsBuilt', function() { 
-    shipit.start('pm2')
+    shipit.start('start')
   })
 }

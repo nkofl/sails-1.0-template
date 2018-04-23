@@ -26,6 +26,7 @@
     "sails-hook-sockets": "^1.4.0",
     "sails-postgresql": "^1.0.1",
     "shipit-npm": "^0.2.0",
+    "shipit-shared": "^4.4.2",
     "socket.io-redis": "^5.2.0"
   },
   "devDependencies": {
